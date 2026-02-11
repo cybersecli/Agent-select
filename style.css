@@ -1,10 +1,43 @@
+/* ===== GLOBAL ===== */
+
 body {
   margin: 0;
-  background: #0f1923;
-  color: #ece8e1;
+  height: 100vh;
+  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  color: #ece8e1;
   text-align: center;
+
+  /* Layered Valorant-style background */
+  background:
+    radial-gradient(circle at 20% 30%, #1f2a35 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #ff465522 0%, transparent 40%),
+    linear-gradient(135deg, #0f1923, #0b141c, #0f1923);
+
+  background-size: 200% 200%;
+  animation: bgMove 15s ease infinite;
 }
+
+/* Animated background movement */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle tactical grid overlay */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ===== SCREEN LAYOUT ===== */
 
 .screen {
   display: none;
@@ -12,37 +45,99 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 .active {
   display: flex;
 }
 
+/* Subtle red edge glow */
+.screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 55%, #ff465522 100%);
+  pointer-events: none;
+}
+
+/* ===== HEADINGS ===== */
+
 h1 {
   font-size: 48px;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+  text-shadow:
+    0 0 10px #ff4655aa,
+    0 0 25px #ff465555;
 }
+
+h2, h3 {
+  letter-spacing: 3px;
+}
+
+/* ===== BUTTONS ===== */
 
 button {
   background: #ff4655;
   border: none;
-  padding: 15px 25px;
+  padding: 15px 30px;
   margin: 10px;
   font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+button:hover {
+  background: #ff2e43;
+  transform: scale(1.07);
+  box-shadow: 0 0 20px #ff4655aa;
+}
+
+/* Agent buttons styled darker */
 .agents button {
   background: #1f2a35;
   border: 2px solid #ff4655;
   color: white;
+  width: 160px;
 }
 
-#lockBtn {
-  display: none;
+.agents button:hover {
+  background: #263645;
 }
+
+/* ===== LOADING BAR ===== */
+
+.loading-bar {
+  width: 300px;
+  height: 8px;
+  background: #1f2a35;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #ff4655;
+  animation: load 2s linear forwards;
+}
+
+@keyframes load {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* ===== COUNTDOWN ===== */
 
 #countdown {
   font-size: 24px;
   margin-bottom: 20px;
+}
+
+/* Hide lock button initially */
+#lockBtn {
+  display: none;
 }
