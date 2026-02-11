@@ -1,5 +1,6 @@
 let selectedAgent = "";
 
+/* Auto move from loading to match found */
 setTimeout(() => {
   switchScreen("loadingScreen", "matchScreen");
 }, 2000);
@@ -9,6 +10,7 @@ function switchScreen(hide, show) {
   document.getElementById(show).classList.add("active");
 }
 
+/* Match Accept */
 function startCountdown() {
   switchScreen("matchScreen", "agentScreen");
 
@@ -27,6 +29,7 @@ function startCountdown() {
   }, 1000);
 }
 
+/* Agent Selection */
 function selectAgent(agent) {
   selectedAgent = agent;
   document.getElementById("output").innerText =
@@ -34,29 +37,34 @@ function selectAgent(agent) {
   document.getElementById("lockBtn").style.display = "inline-block";
 }
 
+/* Final Proposal Screen */
 function lockIn() {
-  let message = "";
-
-  switch (selectedAgent) {
-    case "Jett":
-      message = "Jett: Fast, fearless… and straight to my heart.";
-      break;
-    case "Sage":
-      message = "Sage: I will protect this moment.";
-      break;
-    case "Phoenix":
-      message = "Phoenix: Let’s light it up, love.";
-      break;
-    case "Viper":
-      message = "Viper: You and me? Deadly combination.";
-      break;
-  }
-
-  document.getElementById("output").innerHTML = `
-    <p>${message}</p>
-    <h2>FINAL OBJECTIVE</h2>
-    <h3>Will you be my Valentine? ❤️</h3>
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      background:black;
+      color:white;
+      text-align:center;
+    ">
+      <h1 style="font-size:50px;">MATCH MVP</h1>
+      <h2>KIMIKO</h2>
+      <p style="margin:20px;">Final Objective:</p>
+      <h1>Will you be my Valentine? ❤️</h1>
+      <button onclick="alert('Agent Locked In 💘')"
+        style="margin-top:20px; padding:15px 30px; font-size:18px; background:#ff4655; border:none;">
+        LOCK IN
+      </button>
+    </div>
   `;
-
-  document.getElementById("lockBtn").style.display = "none";
 }
+
+/* Fake live ping */
+setInterval(() => {
+  const ping = document.getElementById("ping");
+  const randomPing = Math.floor(Math.random() * 20) + 25;
+  ping.innerText = randomPing + "ms";
+}, 2000);
