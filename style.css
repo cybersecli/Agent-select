@@ -1,143 +1,59 @@
-/* ===== GLOBAL ===== */
+/* ===== HUD TOP BAR ===== */
 
-body {
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ece8e1;
-  text-align: center;
-
-  /* Layered Valorant-style background */
-  background:
-    radial-gradient(circle at 20% 30%, #1f2a35 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, #ff465522 0%, transparent 40%),
-    linear-gradient(135deg, #0f1923, #0b141c, #0f1923);
-
-  background-size: 200% 200%;
-  animation: bgMove 15s ease infinite;
-}
-
-/* Animated background movement */
-@keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Subtle tactical grid overlay */
-body::after {
-  content: "";
+.hud {
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-/* ===== SCREEN LAYOUT ===== */
-
-.screen {
-  display: none;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-}
-
-.active {
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(10, 15, 20, 0.85);
   display: flex;
-}
-
-/* Subtle red edge glow */
-.screen::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 55%, #ff465522 100%);
-  pointer-events: none;
-}
-
-/* ===== HEADINGS ===== */
-
-h1 {
-  font-size: 48px;
-  letter-spacing: 6px;
-  margin-bottom: 10px;
-  text-shadow:
-    0 0 10px #ff4655aa,
-    0 0 25px #ff465555;
-}
-
-h2, h3 {
-  letter-spacing: 3px;
-}
-
-/* ===== BUTTONS ===== */
-
-button {
-  background: #ff4655;
-  border: none;
-  padding: 15px 30px;
-  margin: 10px;
-  font-size: 16px;
-  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  font-size: 14px;
   letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #ff465533;
 }
 
-button:hover {
-  background: #ff2e43;
-  transform: scale(1.07);
-  box-shadow: 0 0 20px #ff4655aa;
+.hud .left,
+.hud .center,
+.hud .right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-/* Agent buttons styled darker */
-.agents button {
-  background: #1f2a35;
-  border: 2px solid #ff4655;
+.logo {
+  font-weight: bold;
+  color: #ff4655;
+}
+
+.mode {
+  color: #ccc;
+}
+
+.map {
+  color: #aaa;
+}
+
+.player {
+  font-weight: bold;
   color: white;
-  width: 160px;
 }
 
-.agents button:hover {
-  background: #263645;
+.rank {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ff4655;
 }
 
-/* ===== LOADING BAR ===== */
-
-.loading-bar {
-  width: 300px;
-  height: 8px;
-  background: #1f2a35;
-  margin-top: 20px;
-  overflow: hidden;
+.rank img {
+  width: 20px;
 }
 
-.progress {
-  height: 100%;
-  width: 0%;
-  background: #ff4655;
-  animation: load 2s linear forwards;
-}
-
-@keyframes load {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-
-/* ===== COUNTDOWN ===== */
-
-#countdown {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-/* Hide lock button initially */
-#lockBtn {
-  display: none;
+.ping {
+  color: #00ff88;
+  font-weight: bold;
 }
