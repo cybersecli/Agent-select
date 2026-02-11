@@ -1,24 +1,55 @@
-/* ===== HUD TOP BAR ===== */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ece8e1;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at 20% 30%, #1f2a35 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #ff465522 0%, transparent 40%),
+    linear-gradient(135deg, #0f1923, #0b141c, #0f1923);
+
+  background-size: 200% 200%;
+  animation: bgMove 15s ease infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ===== HUD ===== */
 
 .hud {
   position: absolute;
   top: 0;
   width: 100%;
   height: 60px;
-  background: rgba(10, 15, 20, 0.85);
+  background: rgba(10, 15, 20, 0.9);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
   font-size: 14px;
   letter-spacing: 2px;
-  backdrop-filter: blur(6px);
   border-bottom: 1px solid #ff465533;
 }
 
-.hud .left,
-.hud .center,
-.hud .right {
+.hud div {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -29,31 +60,93 @@
   color: #ff4655;
 }
 
-.mode {
-  color: #ccc;
-}
-
-.map {
-  color: #aaa;
-}
-
 .player {
   font-weight: bold;
-  color: white;
 }
 
 .rank {
-  display: flex;
-  align-items: center;
-  gap: 5px;
   color: #ff4655;
+  font-weight: bold;
 }
 
-.rank img {
-  width: 20px;
+.party {
+  color: #888;
 }
 
 .ping {
   color: #00ff88;
   font-weight: bold;
+}
+
+/* ===== SCREENS ===== */
+
+.screen {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.active {
+  display: flex;
+}
+
+h1 {
+  font-size: 48px;
+  letter-spacing: 6px;
+  text-shadow: 0 0 15px #ff4655aa;
+}
+
+button {
+  background: #ff4655;
+  border: none;
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #ff4655aa;
+}
+
+.agents button {
+  background: #1f2a35;
+  border: 2px solid #ff4655;
+  color: white;
+  width: 160px;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 8px;
+  background: #1f2a35;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #ff4655;
+  animation: load 2s linear forwards;
+}
+
+@keyframes load {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+#countdown {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#lockBtn {
+  display: none;
 }
