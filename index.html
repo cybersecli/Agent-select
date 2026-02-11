@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent Select</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>AGENT SELECT</h1>
+    <p class="subtitle">Unrated • Valentine’s Protocol</p>
+
+    <div class="agents">
+      <button onclick="selectAgent('Jett')">Jett</button>
+      <button onclick="selectAgent('Sage')">Sage</button>
+      <button onclick="selectAgent('Phoenix')">Phoenix</button>
+      <button onclick="selectAgent('Viper')">Viper</button>
+    </div>
+
+    <div id="output"></div>
+    <button id="lockBtn" onclick="lockIn()">LOCK IN</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
