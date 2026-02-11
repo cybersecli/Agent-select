@@ -2,14 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Agent Select</title>
+  <title>VALORANT</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="screen active">
+    <h1>VALORANT</h1>
+    <p>Connecting...</p>
+  </div>
+
+  <!-- Match Found Screen -->
+  <div id="matchScreen" class="screen">
+    <h1>MATCH FOUND</h1>
+    <p>Valentine’s Protocol</p>
+    <button onclick="startCountdown()">ACCEPT</button>
+  </div>
+
+  <!-- Agent Select Screen -->
+  <div id="agentScreen" class="screen">
     <h1>AGENT SELECT</h1>
-    <p class="subtitle">Unrated • Valentine’s Protocol</p>
+    <p id="countdown"></p>
 
     <div class="agents">
       <button onclick="selectAgent('Jett')">Jett</button>
