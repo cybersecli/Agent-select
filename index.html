@@ -1,4 +1,13 @@
-<!-- Top Game HUD -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VALORANT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== TOP HUD ===== -->
 <div class="hud">
   <div class="left">
     <span class="logo">VALORANT</span>
@@ -11,10 +20,43 @@
 
   <div class="right">
     <span class="player">KIMIKO</span>
-    <span class="rank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Valorant_Immortal_Rank.png" alt="rank">
-      Immortal
-    </span>
+    <span class="rank">IMMORTAL</span>
+    <span class="party">Party: 2/5</span>
     <span class="ping" id="ping">32ms</span>
   </div>
 </div>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loadingScreen" class="screen active">
+  <h1>VALORANT</h1>
+  <div class="loading-bar">
+    <div class="progress"></div>
+  </div>
+</div>
+
+<!-- ===== MATCH FOUND ===== -->
+<div id="matchScreen" class="screen">
+  <h1>MATCH FOUND</h1>
+  <p>Duo Queue: Kimiko + ???</p>
+  <button onclick="startCountdown()">ACCEPT</button>
+</div>
+
+<!-- ===== AGENT SELECT ===== -->
+<div id="agentScreen" class="screen">
+  <h1>AGENT SELECT</h1>
+  <p id="countdown"></p>
+
+  <div class="agents">
+    <button onclick="selectAgent('Jett')">Jett</button>
+    <button onclick="selectAgent('Sage')">Sage</button>
+    <button onclick="selectAgent('Phoenix')">Phoenix</button>
+    <button onclick="selectAgent('Viper')">Viper</button>
+  </div>
+
+  <div id="output"></div>
+  <button id="lockBtn" onclick="lockIn()">LOCK IN</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
